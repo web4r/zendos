@@ -208,3 +208,34 @@ echo "<br>";
 echo $sequenceNumber_inquiry_bank;
 echo "<br>";
 echo "<br>";
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://zendmoney.com/ZendPartnerAPIDev/api/ZmartInquiry',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => '{
+    "BankCode" : "014",
+    "AccountNumber" : "0916007072"
+}',
+    CURLOPT_HTTPHEADER => array(
+        'PartnerID: 00020',
+        'PartnerKey: AwZw7KbwEGP+CXQH0EAvypdbfGpg/B4/9jJzABEEdEA=',
+        'TimeStamp: 2021-03-30T07:52:08Z',
+        'SequenceNumber: 000483',
+        'Authorization: Bearer 5kQntTTImHYvCYym9AGPm9jLzKiJ9aJuQroyH_tIAxmmG5lGtUeveR-SNR4bAiA4cWn5hNJxLdUEFWylIzb1ZRMp-GyQBc6CBgUO3mSO8MCM3U80KLaatTWNYTSz1O6hRrezGvZs0zs47ZoFmyeWkoTWXeJXPILx6FOmGtuNtdVyr_4xN2ddTPUFhhenLGBahsZT-TxGHNKA8W4rAKTHyrw19-KF0EEOKkimYzz4nyb_Gy518VcSrhVdIYJiWlSJO0e1IO5vEyA-4TFM4zIvIrd0xSp4FaqW15tvNDP1vmwxbZfhUC3nnSbgn1aatAjcgZHeF894aAPGzgMO10ElPb-oxaUHGMVhWMqQ8zSvM8tbnP41cJP5pn7lR3Ku-0z6aqrViTMxnz267JG0mPy8aFVFi9PUF2MGItTYv7vGBNKV5oHozBdEK_vClcoHJLrODqVHarzr-uuR_1bq0QA5Kg',
+        'Content-Type: application/json'
+    ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
